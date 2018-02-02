@@ -6,8 +6,10 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.GridView;
 
 import com.example.android.android_me.R;
+import com.example.android.android_me.data.AndroidImageAssets;
 
 import java.util.List;
 
@@ -17,32 +19,20 @@ import java.util.List;
 
 public class MasterListFragment extends Fragment {
 
-    // Final Strings to store state information about the list of images and list index
-    public static final String IMAGE_ID_LIST = "image_ids";
-    public static final String LIST_INDEX = "list_index";
-
-    // Tag for logging
-    private static final String TAG = "MasterListFragment";
-
-    // Variables to store a list of image resources and the index of the image that this fragment displays
-    private List<Integer> mImageIds;
-    private int mListIndex;
-
     public MasterListFragment(){}
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        // Load the saved state (the list of images and list index) if there is one
-        if(savedInstanceState != null) {
-            mImageIds = savedInstanceState.getIntegerArrayList(IMAGE_ID_LIST);
-            mListIndex = savedInstanceState.getInt(LIST_INDEX);
-        }
 
         // Inflate the Android-Me fragment layout
         View rootView = inflater.inflate(R.layout.fragment_master_list, container, false);
 
-        MasterListAdapter adapter = new MasterListAdapter(rootView.getContext(), mImageIds);
+        GridView gridView = (GridView) rootView.findViewById(R.id.id_master_list);
+
+        MasterListAdapter adapter = new MasterListAdapter(rootView.getContext(), AndroidImageAssets.getAll());
+
+        gridView.setAdapter(adapter);
 
         return rootView;
     }
