@@ -30,7 +30,7 @@ public class MasterListFragment extends Fragment {
 
         GridView gridView = (GridView) rootView.findViewById(R.id.id_master_list);
 
-        MasterListAdapter adapter = new MasterListAdapter(rootView.getContext(), AndroidImageAssets.getAll());
+        MasterListAdapter adapter = new MasterListAdapter(getContext(), AndroidImageAssets.getAll());
 
         gridView.setAdapter(adapter);
 
