@@ -106,6 +106,7 @@ public class BodyPartFragment extends Fragment {
 
     // TODO (4) Override onSaveInstanceState and save the current state of this fragment
 
+
     @Override
     public void onSaveInstanceState(Bundle outState) {
         outState.putIntegerArrayList(LIST_IMAGES, (ArrayList<Integer>) mImageIds);
